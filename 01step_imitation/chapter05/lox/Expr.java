@@ -4,6 +4,8 @@ package lox;
 import java.util.List;
 
 abstract class Expr {
+
+  //用于访问不同类型表达式的方法
   interface Visitor<R> {
     R visitBinaryExpr(Binary expr);
     R visitGroupingExpr(Grouping expr);
@@ -14,6 +16,8 @@ abstract class Expr {
   // Nested Expr classes here...
 //> expr-binary
   static class Binary extends Expr {
+    
+    //用于存储二元表达式的左操作数、运算符和右操作数
     Binary(Expr left, Token operator, Expr right) {
       this.left = left;
       this.operator = operator;
