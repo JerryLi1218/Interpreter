@@ -1,0 +1,17 @@
+com/myinterpreter/lox/Expr$Unary.class
+com/myinterpreter/lox/AstPrinter.class
+com/myinterpreter/lox/Scanner.class
+com/myinterpreter/lox/Expr$Grouping.class
+com/myinterpreter/tool/GenerateAst$Beignet.class
+com/myinterpreter/lox/Expr$Literal.class
+com/myinterpreter/lox/Expr$Visitor.class
+com/myinterpreter/tool/GenerateAst$Pastry.class
+com/myinterpreter/tool/GenerateAst$Cruller.class
+com/myinterpreter/tool/GenerateAst.class
+com/myinterpreter/tool/GenerateAst$PastryVisitor.class
+com/myinterpreter/lox/Expr$Binary.class
+com/myinterpreter/lox/TokenType.class
+com/myinterpreter/lox/Expr.class
+com/myinterpreter/App.class
+com/myinterpreter/lox/Lox.class
+com/myinterpreter/lox/Token.class

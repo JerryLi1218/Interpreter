@@ -1,0 +1,8 @@
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/App.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/Scanner.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/TokenType.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/tool/GenerateAst.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/Expr.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/Token.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/AstPrinter.java
+/home/mb/2023summer/2023code/interpreter/MyInterpreter/src/main/java/com/myinterpreter/lox/Lox.java
