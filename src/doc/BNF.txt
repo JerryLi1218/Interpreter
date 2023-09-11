@@ -5,9 +5,15 @@ term            -> factor ( ( "-" | "+" ) factor )* ;
 factor          -> unary ( ( "/" | "*" ) unary )* ;
 unary           -> ( ":" | "-" ) unary
                 | primary ;
+varDecl         -> "var" IDENTIFIER ( "=" expression )? ":" ;
 primary         -> NUMBER | STRING | "true" | "false" | "nil"
-                | "(" expression ")" ;
+                | "(" expression ")" 
+                | IDENTIFIER ;
 
+
+program         -> declaration* EOF ;
+declaration     -> varDecl
+                | statement ;
 
 statment        -> exprSmt
                 |  printStmt ;
