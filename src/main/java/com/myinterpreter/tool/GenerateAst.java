@@ -7,17 +7,29 @@ import java.util.List;
 
 public class GenerateAst {
   public static void main(String[] args) throws IOException {
-    if (args.length != 1) {
-      System.err.println("Usage: generate_ast <output directory>");
-      System.exit(64);
-    }
-    String outputDir = args[0];
+    // if (args.length != 1) {
+    //   System.err.println("Usage: generate_ast <output directory>");
+    //   System.exit(64);
+    // }
+    //String outputDir = args[0];
+
+    String userDir = System.getProperty("user.dir");
+    System.out.println(userDir);
+    String outputDir = userDir + "/src/main/java/com/myinterpreter/lox";
+
+
     defineAst(outputDir, "Expr", Arrays.asList(
       "Binary   : Expr left, Token operator, Expr right",
       "Grouping : Expr expression",
       "Literal  : Object value",
       "Unary    : Token operator, Expr right"
     ));
+
+    defineAst(outputDir, "Stmt", Arrays.asList(
+      "Expression : Expr expression",
+      "Print      : Expr expression"
+    ));
+
   }
 
   private static void defineAst(
@@ -27,7 +39,10 @@ public class GenerateAst {
     PrintWriter writer = new PrintWriter(path, "UTF-8");
 
     writer.println("//> Appendix II " + baseName.toLowerCase());
-    writer.println("package com.craftinginterpreters.lox;");
+    //writer.println("package com.craftinginterpreters.lox;");
+    
+    // change to my own package name
+    writer.println("package com.myinterpreter.lox;");
     writer.println();
     writer.println("import java.util.List;");
     writer.println();

@@ -7,3 +7,10 @@ unary           -> ( ":" | "-" ) unary
                 | primary ;
 primary         -> NUMBER | STRING | "true" | "false" | "nil"
                 | "(" expression ")" ;
+
+
+statment        -> exprSmt
+                |  printStmt ;
+
+exprSmt         -> expression ":" ;
+printStmt       -> "print" expression ":";
