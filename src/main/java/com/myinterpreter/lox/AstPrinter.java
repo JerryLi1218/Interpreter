@@ -1,9 +1,12 @@
 package com.myinterpreter.lox;
 
 import java.util.List;
-import com.myinterpreter.lox.Expr.Literal;
 
-class AstPrinter implements Expr.Visitor<String> {
+import com.myinterpreter.lox.Expr.Assign;
+import com.myinterpreter.lox.Expr.Literal;
+import com.myinterpreter.lox.Expr.Variable;
+
+public class AstPrinter implements Expr.Visitor<String> {
 
   String print(Expr expr) {
     return expr.accept(this);
@@ -91,6 +94,18 @@ class AstPrinter implements Expr.Visitor<String> {
         builder.append(part);
       }
     }
+  }
+
+  @Override
+  public String visitAssignExpr(Assign expr) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'visitAssignExpr'");
+  }
+
+  @Override
+  public String visitVariableExpr(Variable expr) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'visitVariableExpr'");
   }
 
 

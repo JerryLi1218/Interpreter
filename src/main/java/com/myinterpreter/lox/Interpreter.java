@@ -2,6 +2,8 @@ package com.myinterpreter.lox;
 
 import java.util.List;
 
+import com.myinterpreter.lox.Expr.Assign;
+
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
 
     private Environment environment = new Environment();
@@ -194,6 +196,12 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
 
 
         return null;
+    }
+
+    @Override
+    public Object visitAssignExpr(Assign expr) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visitAssignExpr'");
     }
 
 }
