@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
 
+    private Environment environment = new Environment();
+
     // Interpreter public API
     void interpret(List<Stmt> statements) {
         try {
@@ -24,12 +26,12 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
     // recursively evaluate that subexpression and return it
     @Override
     public Object visitGroupingExpr(Expr.Grouping expr) {
-        return evaluation(expr.expression);
+        return evaluate(expr.expression);
     }
 
     // helper method which simply sends the expression back into the
     // interpreter’s visitor implementation
-    private Object evaluation(Expr expr) {
+    private Object evaluate(Expr expr) {
         return expr.accept(this);
     }
 
@@ -39,23 +41,31 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
 
     @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
-        evaluation(stmt.expression);
+        evaluate(stmt.expression);
         return null;
     }
 
     @Override
     public Void visitPrintStmt(Stmt.Print stmt) {
-        Object value = evaluation(stmt.expression);
+        Object value = evaluate(stmt.expression);
         System.out.println(stringify(value));
         return null;
     }
 
+    @Override
+    public Void visitVarStmt(Stmt.Var stmt) {
+        Object value = null;
+        if (stmt.initializer != null) {
+            value = evaluate(stmt.initializer);
+        }
 
-
+        environment.define(stmt.name.lexeme, value);
+        return null;
+    }
 
     @Override
     public Object visitUnaryExpr(Expr.Unary expr) {
-        Object right = evaluation(expr.right);
+        Object right = evaluate(expr.right);
         
         switch (expr.operator.type) {
             case BANG:
@@ -66,6 +76,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
         }
 
         return  null;
+    }
+
+    @Override
+    public Object visitVariableExpr(Expr.Variable expr) {
+        return environment.get(expr.name);
     }
 
     private void checkNumberOperand(Token opertor, Object operand) {
@@ -108,8 +123,8 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void>{
 
     @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
-        Object left = evaluation(expr.left);
-        Object right = evaluation(expr.right);
+        Object left = evaluate(expr.left);
+        Object right = evaluate(expr.right);
 
         switch (expr.operator.type) {
             // comparison operators
