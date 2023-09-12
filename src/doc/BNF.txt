@@ -18,7 +18,9 @@ declaration     -> varDecl
                 | statement ;
 
 statment        -> exprSmt
-                |  printStmt ;
+                |  printStmt 
+                |  block ;
 
+block           -> "{" declaration* "}" ;
 exprSmt         -> expression ":" ;
 printStmt       -> "print" expression ":";
