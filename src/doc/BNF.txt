@@ -20,11 +20,15 @@ declaration     -> varDecl
                 | statement ;
 
 statment        -> exprSmt
+                |  forStmt
                 |  ifStmt
                 |  printStmt 
                 |  whileStmt
                 |  block ;
 
+forStmt         -> "for" "(" ( varDecl | exprSmt | ":" )
+                    expression? ";"
+                    expression? ")" statement;
 whileStmt       -> "while" "(" expression ")" statement ;
 ifStmt          -> "if" "(" expression ")" statement
                 ( "else" statement )? ;
