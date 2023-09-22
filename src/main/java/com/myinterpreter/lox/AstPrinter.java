@@ -3,6 +3,7 @@ package com.myinterpreter.lox;
 import java.util.List;
 
 import com.myinterpreter.lox.Expr.Assign;
+import com.myinterpreter.lox.Expr.Call;
 import com.myinterpreter.lox.Expr.Literal;
 import com.myinterpreter.lox.Expr.Logical;
 import com.myinterpreter.lox.Expr.Variable;
@@ -113,6 +114,12 @@ public class AstPrinter implements Expr.Visitor<String> {
   public String visitLogicalExpr(Logical expr) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'visitLogicalExpr'");
+  }
+
+  @Override
+  public String visitCallExpr(Call expr) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'visitCallExpr'");
   }
 
 
