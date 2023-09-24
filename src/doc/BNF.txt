@@ -29,8 +29,10 @@ statment        -> exprSmt
                 |  ifStmt
                 |  printStmt 
                 |  whileStmt
+                |  returnStmt
                 |  block ;
 
+returnStmt      -> "return" expression? ";" ;
 forStmt         -> "for" "(" ( varDecl | exprSmt | ":" )
                     expression? ";"
                     expression? ")" statement;
