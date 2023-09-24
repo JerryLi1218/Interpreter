@@ -2,11 +2,7 @@ package com.myinterpreter.lox;
 
 import java.util.List;
 
-import com.myinterpreter.lox.Expr.Assign;
-import com.myinterpreter.lox.Expr.Call;
-import com.myinterpreter.lox.Expr.Literal;
-import com.myinterpreter.lox.Expr.Logical;
-import com.myinterpreter.lox.Expr.Variable;
+import com.myinterpreter.lox.Expr.*;
 
 public class AstPrinter implements Expr.Visitor<String> {
 

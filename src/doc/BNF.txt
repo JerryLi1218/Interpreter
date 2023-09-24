@@ -11,13 +11,17 @@ unary           -> ( ":" | "-" ) unary | call ;
 call            -> primary ( "(" arguments? ")" )* ;
 arguments       -> expression ( "," expression )* ;
 varDecl         -> "var" IDENTIFIER ( "=" expression )? ":" ;
+funDecl         -> "fun" function ;
+function        -> IDENTIFIER "(" parameters? ")" block ;
+parameters      -> IDENTIFIER ( "," IDENTIFIER )* ;
 primary         -> NUMBER | STRING | "true" | "false" | "nil"
                 | "(" expression ")" 
                 | IDENTIFIER ;
 
 
 program         -> declaration* EOF ;
-declaration     -> varDecl
+declaration     -> funDecl 
+                | varDecl
                 | statement ;
 
 statment        -> exprSmt
